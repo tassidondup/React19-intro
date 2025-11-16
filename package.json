@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview",
     "format": "prettier --write 'src/**/*.{js,jsx,css,html,json}'",
     "lint": "eslint",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,7 +16,8 @@
     "url": "git+https://github.com/tassidondup/React19-intro.git"
   },
   "keywords": [],
-  "author": "",
+  "type": "module",
+  "author": "Tashi Dhondup",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/tassidondup/React19-intro/issues"
@@ -24,9 +28,15 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@vitejs/plugin-react": "^4.3.1",
     "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
     "globals": "^15.9.0",
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "vite": "^5.4.2"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }
