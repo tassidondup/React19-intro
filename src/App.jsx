@@ -1,23 +1,19 @@
-import React from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import Pizza from "./Pizza";
+import { RouterProvider, createRouter } from "@tanstack/react-router";
+import { routeTree } from "./routeTree.gen";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const router = createRouter({ routeTree });
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <div>
-      <Pizza
-        name="Margherita"
-        description="Classic delight with 100% real mozzarella cheese"
-      />
-      <Pizza
-        name="Pepperoni"
-        description="A classic American taste! Relish the delectable flavor of Pepperoni, topped with extra cheese"
-      />
-      <Pizza
-        name="Veggie Supreme"
-        description="A colorful mix of fresh veggies including bell peppers, olives, onions, and tomatoes"
-      />
-    </div>
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </StrictMode>
   );
 };
 
