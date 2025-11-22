@@ -5,22 +5,33 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import PizzaOfTheDay from "../PizzaOfTheDay";
 import Header from "../Header";
 import { CartContext } from "../contexts";
+// import ErrorBoundary from "../ErrorBoundary";
+
+// function ErrorBoundaryRoot() {
+//   return (
+//     <ErrorBoundary>
+//       <Root />
+//     </ErrorBoundary>
+//   );
+// }
+
+function Root() {
+  const cartHook = useState([]);
+  return (
+    <>
+      <CartContext.Provider value={cartHook}>
+        <div>
+          <Header />
+          <Outlet />
+          <PizzaOfTheDay />
+        </div>
+      </CartContext.Provider>
+      <TanStackRouterDevtools />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </>
+  );
+}
 
 export const Route = createRootRoute({
-  component: () => {
-    const cartHook = useState([]);
-    return (
-      <>
-        <CartContext.Provider value={cartHook}>
-          <div>
-            <Header />
-            <Outlet />
-            <PizzaOfTheDay />
-          </div>
-        </CartContext.Provider>
-        <TanStackRouterDevtools />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </>
-    );
-  },
+  component: Root,
 });
